@@ -72,7 +72,7 @@ class SR(object):
 
     def run(self, 
             image: np.ndarray,
-            window_size: int = -1,
+            window_size: int = 128,
            ):
         
         # image: [H, W, 3] or [H, W, 4]
