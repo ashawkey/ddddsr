@@ -63,7 +63,7 @@ sr.run(
 
 
 ### References
-* The original `waifu2x`: https://github.com/nagadomi/waifu2x.
+* The original [waifu2x](https://github.com/nagadomi/waifu2x).
 
 * ONNX models are from [waifu2x-onnx](https://github.com/tcyrus/waifu2x-onnx).
 
