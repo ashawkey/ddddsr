@@ -55,8 +55,8 @@ sr = ddddsr.SR(
 sr.run(
     # image file, support [H, W, 3] or [H, W, 4]
     image: np.ndarray,
-    # slide window size, -1 means no slide window. Change to e.g. 128 or 256 if OOM.
-    window: int = -1,
+    # slide window size, -1 means no slide window.
+    window: int = 128,
 )
 ```
 

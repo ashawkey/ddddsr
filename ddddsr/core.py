@@ -153,6 +153,7 @@ class SR(object):
                 font_size=self.ocr_font_size,
                 font_color=self.ocr_font_color, 
                 background_color=self.ocr_background_color,
+                font_path=self.ocr_font_ttf,
                 drop_score=0.3)
 
         return result
