@@ -1,3 +1,3 @@
 from .core import SR
 
-__version__ = "0.1.4"
+__version__ = "0.1.5"

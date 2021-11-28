@@ -155,10 +155,7 @@ class SR(object):
                         patch_y = self.__ort_session.run(None, {self.__ort_input_name: patch_x})[0]
                         y[:, :, h0*2:h1*2, w0*2:w1*2] += patch_y
                         cnt[h0*2:h1*2, w0*2:w1*2] += 1
-
-                print(y.shape, cnt.shape, time.time())
                 x = y / cnt
-                print(time.time())
 
             iter_2x -= 1
 
