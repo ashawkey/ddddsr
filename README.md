@@ -18,13 +18,10 @@ pip install ddddsr
 
 ```python
 import ddddsr
-import cv2
 
+# read input.jpg and write to output.png
 # default is 2x upscaling on CPU using waifu2x cunet.
-sr = ddddsr.SR()
-x = cv2.imread('input.jpg', cv2.IMREAD_UNCHANGED)
-y = sr.run(x)
-cv2.imwrite('output.png', y)
+ddddsr.SR()('input.jpg', 'output.png')
 ```
 
 API reference:
@@ -50,13 +47,17 @@ sr = ddddsr.SR(
     ocr_font_color: Union[Tuple[int], List[int]] = (0, 0, 0),
     ocr_background_color: Union[Tuple[int], List[int]] = (255, 255, 255),
     ocr_font_ttf: Optional[str] = None, # path for ttf font file
+    # verbose 
+    verbose: bool = False,
 )
 
-sr.run(
-    # image file, support [H, W, 3] or [H, W, 4]
-    image: np.ndarray,
+sr(
+    # image, support array of [H, W, 3] or [H, W, 4], or the file path.
+    image: Union[np.ndarray, str],
+    # output_path, output file path, if is None, will return the ndarray.
+    output_path: str = None,
     # slide window size, -1 means no slide window.
-    window: int = 128,
+    window: int = 256,
 )
 ```
 
