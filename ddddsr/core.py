@@ -136,8 +136,14 @@ class SR(object):
                 print(f'[INFO] 2x scaling remaining: {iter_2x}, window size = {window_size}')
 
             if window_size == -1:
-                x = np.pad(x, ((0, 0), (0, 0), (padding, padding), (padding, padding)))
+                # handle odd image size (fix https://github.com/ashawkey/ddddsr/issues/1)
+                h, w = x.shape[2], x.shape[3]
+                extra_padding_h = 1 if h % 2 != 0 else 0
+                extra_padding_w = 1 if w % 2 != 0 else 0
+                x = np.pad(x, ((0, 0), (0, 0), (padding, padding + extra_padding_h), (padding, padding + extra_padding_w)))
                 x = self.__ort_session.run(None, {self.__ort_input_name: x})[0]
+                x = x[:, :, :2*h, :2*w]
+
             else:
                 h, w = x.shape[2], x.shape[3]
                 pad_x = np.pad(x, ((0, 0), (0, 0), (padding, padding), (padding, padding))).astype(np.float32)
